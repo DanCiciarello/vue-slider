@@ -29,3 +29,19 @@ const slides = [
 console.log(slides);
 
 // ------------------------------------------------------- //
+
+const appVue = new Vue ({
+    el: "#app",
+
+    // App data
+    data: {
+        slides: slides,
+        currentSlide: slides[0].image,
+    },
+
+    // App methods
+    methods: {
+        
+    },
+
+});
