@@ -36,12 +36,36 @@ const appVue = new Vue ({
     // App data
     data: {
         slides: slides,
-        currentSlide: slides[0].image,
+        currentSlideImage: slides[0].image,
+        currentSlideTitle: slides[0].title,
+        currentSlideText: slides[0].text,
+        indexSlide: 0,
     },
 
     // App methods
     methods: {
-        
+        nextSlide: function() {
+            this.indexSlide++;
+            if (this.indexSlide >= this.slides.length) {
+                this.indexSlide = 0;
+            }
+            this.currentSlideImage = this.slides[this.indexSlide].image;
+            this.currentSlideTitle = this.slides[this.indexSlide].title;
+            this.currentSlideText = this.slides[this.indexSlide].text;
+            
+        },
+        prevSlide: function() {
+            if (this.indexSlide === 0) {
+                console.log(this.indexSlide);
+                this.indexSlide = this.slides.length - 1;
+            } else {
+                this.indexSlide--;
+            console.log(this.indexSlide);
+            }
+            this.currentSlideTitle = this.slides[this.indexSlide].title;
+            this.currentSlideText = this.slides[this.indexSlide].text;
+            this.currentSlideImage = this.slides[this.indexSlide].image;
+        },
     },
 
 });
