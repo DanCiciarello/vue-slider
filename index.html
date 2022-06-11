@@ -29,9 +29,12 @@
                 <div class="thumbs">
                     <div class="prev" @click="prevSlide"></div>
                     <div class="next" @click="nextSlide"></div>
+
+                    <!-- Ciclo for per generare le thumbs -->
                     <div class="thumb" v-for="(slide, i) in slides">
                         <img :src="slides[i].image" :alt="slides[i].title" @click="selectedImage(i)"/>
                     </div>
+
                 </div>
 
             </div>
