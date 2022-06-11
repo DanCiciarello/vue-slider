@@ -26,14 +26,12 @@ const slides = [
     }
 ];
 
-console.log(slides);
-
 // ------------------------------------------------------- //
 
 const appVue = new Vue ({
     el: "#app",
 
-    // App data
+    // App data ----------------------------
     data: {
         slides: slides,
         currentSlideImage: slides[0].image,
@@ -42,30 +40,51 @@ const appVue = new Vue ({
         indexSlide: 0,
     },
 
-    // App methods
+    // App methods ----------------------------
     methods: {
+
+        // Freccia next slide
         nextSlide: function() {
+            // Incremento l'indice della slide
             this.indexSlide++;
+            // Controllo se è arrivata alla fine dell'array
             if (this.indexSlide >= this.slides.length) {
+                // Nel caso, faccio tornare l'indice all'inizio dell'array
                 this.indexSlide = 0;
             }
+            // Imposto le variabili dell'immagine mostrata
             this.currentSlideImage = this.slides[this.indexSlide].image;
             this.currentSlideTitle = this.slides[this.indexSlide].title;
             this.currentSlideText = this.slides[this.indexSlide].text;
             
         },
+
+        // Freccia prev slide
         prevSlide: function() {
+            // Controllo se l'indice è arrivato all'inizio dell'array
             if (this.indexSlide === 0) {
-                console.log(this.indexSlide);
+                // Nel caso, faccio tornare l'indice alla fine dell'array
                 this.indexSlide = this.slides.length - 1;
-            } else {
+            } 
+            // Altrimenti decremento l'indice
+            else {
                 this.indexSlide--;
-            console.log(this.indexSlide);
             }
+            // Imposto le variabili dell'immagine mostrata
             this.currentSlideTitle = this.slides[this.indexSlide].title;
             this.currentSlideText = this.slides[this.indexSlide].text;
             this.currentSlideImage = this.slides[this.indexSlide].image;
         },
+
+        // Bonus: mostra immagine al click sulla thumb
+        selectedImage: function(index) {
+            // Recupero l'indice dal click
+            this.indexSlide = index;
+            // Imposto le variabili dell'immagine mostrata
+            this.currentSlideTitle = this.slides[this.indexSlide].title;
+            this.currentSlideText = this.slides[this.indexSlide].text;
+            this.currentSlideImage = this.slides[this.indexSlide].image;
+        }
     },
 
 });

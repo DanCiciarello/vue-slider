@@ -16,6 +16,7 @@
         <div class="container" >
             <div class="slider-wrapper" tabindex="0">
 
+                <!-- Immagine corrente -->
                 <div class="item">
                     <img :src="currentSlideImage" :alt="currentSlideTitle" />
                     <div class="text">
@@ -24,11 +25,12 @@
                     </div>
                 </div>
 
+                <!-- Thumbs dello slider -->
                 <div class="thumbs">
                     <div class="prev" @click="prevSlide"></div>
                     <div class="next" @click="nextSlide"></div>
                     <div class="thumb" v-for="(slide, i) in slides">
-                        <img :src="slides[i].image" :alt="slides[i].title"/>
+                        <img :src="slides[i].image" :alt="slides[i].title" @click="selectedImage(i)"/>
                     </div>
                 </div>
 
