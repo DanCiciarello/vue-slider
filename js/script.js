@@ -37,6 +37,7 @@ const appVue = new Vue ({
         currentSlideImage: slides[0].image,
         currentSlideTitle: slides[0].title,
         currentSlideText: slides[0].text,
+        currentSlideClass: "active",
         indexSlide: 0,
     },
 
